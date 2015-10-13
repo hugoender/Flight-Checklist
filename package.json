@@ -1,0 +1,23 @@
+{
+  "name": "beginner-app",
+  "version": "1.0.0",
+  "description": "Flight checklist for DJI Phantom",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hugoender/Flight-Checklist.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hugoender/Flight-Checklist/issues"
+  },
+  "homepage": "https://github.com/hugoender/Flight-Checklist",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "^2.0.45"
+  }
+}
