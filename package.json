@@ -1,5 +1,5 @@
 {
-  "name": "beginner-app",
+  "name": "Flight-Checklist",
   "version": "1.0.0",
   "description": "Flight checklist for DJI Phantom",
   "main": "server.js",
