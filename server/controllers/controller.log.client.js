@@ -7,9 +7,6 @@
 
   // Define API endpoint
   var apiURL = 'http://localhost:3000/api/logs';
-  // Define variables for different list items
-  var logProp = document.querySelector('#list-prop');
-  var logButton = document.querySelector('#log-button');
   var logText = document.querySelector('#log-text');
 
   // Make sure page is ready before executing callback function ----------------
@@ -39,12 +36,11 @@
 
   // AJAX request function -----------------------------------------------------
   function ajaxRequest(method, url, callback) {
+    console.log('Entered AJAX');
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        console.log(xmlhttp.readyState);
-        console.log(xmlhttp.status);
         callback(xmlhttp.response);
       }
       else {
@@ -58,28 +54,13 @@
   }
 
   // Parse AJAX response data and place it in log.html -------------------------
-  function getLog(data) {
-    console.log('Entered getLog!!!!');
-    console.log(data);
+  function updateLog(data) {
+    console.log('Entered updateLog');
     var logObject = JSON.parse(data);
     logText.innerHTML = logObject.timestamp + ' - ' + logObject.listitem;
   }
 
   // Execute AJAX request if page is ready -------------------------------------
-  //ready(ajaxRequest('GET', apiURL, updateLog));
-
-
-  // Event listeners -----------------------------------------------------------
-  logProp.addEventListener('click', function(){
-    ajaxRequest('POST', apiURL, function(data){
-      return;
-    });
-  }, false);
-
-  logButton.addEventListener('click', function(){
-    ajaxRequest('GET', apiURL, function(data){
-      //console.log(data);
-    });
-  }, false);
+  ready(ajaxRequest('GET', apiURL, updateLog));
 
 })();

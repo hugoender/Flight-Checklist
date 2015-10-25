@@ -2,7 +2,9 @@
 
 // Include dependencies/modules ================================================
 var express = require('express');
+var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
+var routes = require('./server/routes/index.js');
 
 // Assign express object (and it's methods) to app =============================
 var app = express();
@@ -15,6 +17,8 @@ var dburl = 'mongodb://localhost:' + mongoport + '/checklistapp';
 // Connect to MongoDB ==========================================================
 mongo.connect(dburl, function(err, db){
 
+
+
   // Handle error --------------------------------------------------------------
   if (err) {
     throw new Error('Database failed to connect!');
@@ -25,26 +29,14 @@ mongo.connect(dburl, function(err, db){
   }
 
   // Define middleware usage ---------------------------------------------------
-  // May need to specify '/public' path to distinguish from '/controllers'
+  // This needs to be placed before the routes (still not sure why)
   app.use('/public', express.static(__dirname + '/public'));
   app.use('/controllers', express.static(__dirname + '/server/controllers'));
+  // Enable features of body-parser module
+  app.use(bodyParser.urlencoded({extended:true}));
+  app.use(bodyParser.json());
 
-  // Handle the routing of various requests ------------------------------------
-  app.route('/')
-      .get(function(req, res) {
-        res.sendFile(process.cwd()+'/public/index.html');
-      });
-
-  app.route('/api/logs')
-      .get(function(req, res) {
-        console.log('GET received!');
-      })
-      .post(function(req, res) {
-        console.log('POST received!');
-      });
-
-  // Define what to do when checkboxes are checked -----------------------------
-
+  routes(app, db);
 
   // Listen for incoming connections -------------------------------------------
   app.listen(3000, function() {
