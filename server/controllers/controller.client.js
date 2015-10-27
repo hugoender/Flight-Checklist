@@ -59,8 +59,9 @@
 
   // Parse AJAX response data and place it in log.html -------------------------
   function getLog(data) {
-    console.log('Entered getLog!!!!');
-    console.log(data);
+    // console.log('Entered getLog!!!!');
+    // console.log(data);
+    console.log(data[0]);
     var logObject = JSON.parse(data);
     logText.innerHTML = logObject.timestamp + ' - ' + logObject.listitem;
   }
@@ -77,9 +78,7 @@
   }, false);
 
   logButton.addEventListener('click', function(){
-    ajaxRequest('GET', apiURL, function(data){
-      //console.log(data);
-    });
+    ajaxRequest('GET', apiURL, getLog);
   }, false);
 
 })();

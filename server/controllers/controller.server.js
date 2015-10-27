@@ -41,30 +41,11 @@ function clickHandler (db) {
 
   this.getLog = function (req, res){
     var logProjection = { '_id': false };
-    var logDocsArr = logs.find({}).toArray();
-    console.log(logDocsArr);
-    // for (var i = 0; i < logs.count(); i++){
-    //   console.log(logDocsArr[i]);
-    //   res.json(logDocsArr[i]);
-    // }
-
-    logs.findOne({}, logProjection, function (err, result) {
+    // Cannot use logs.find({}, logProjection, function...) because I am using
+    // Mongo Node driver that is v2.0+
+    logs.find().project(logProjection).toArray(function (err, result) {
       if (err) throw err;
-
-      if (result) {
-        res.json(result);
-      }
-      else {
-        logs.insert({}, function (err){
-          if (err) throw err;
-
-          logs.findOne({}, logProjection, function(err, doc) {
-            if (err) throw err;
-
-            res.json(doc);
-          });
-        });
-      }
+      res.json(result);
     });
 
     //console.log(json(logs.find({})));

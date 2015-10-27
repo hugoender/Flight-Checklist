@@ -18,9 +18,6 @@ module.exports = function (app, db) {
       });
 
   app.route('/api/logs')
-      // .get(function(req, res){
-      //   res.send("hello get");
-      // })
       .get(clickHandler.getLog)
       .post(clickHandler.addLog)
       .delete(clickHandler.deleteLog);
