@@ -43,13 +43,7 @@
 
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        console.log(xmlhttp.readyState);
-        console.log(xmlhttp.status);
         callback(xmlhttp.response);
-      }
-      else {
-        console.log(xmlhttp.readyState);
-        console.log(xmlhttp.status);
       }
     };
 
@@ -59,11 +53,20 @@
 
   // Parse AJAX response data and place it in log.html -------------------------
   function getLog(data) {
-    // console.log('Entered getLog!!!!');
-    // console.log(data);
-    console.log(data[0]);
-    var logObject = JSON.parse(data);
-    logText.innerHTML = logObject.timestamp + ' - ' + logObject.listitem;
+    // If log has entries, remove the "No Log Entries" text
+    var logObjects = JSON.parse(data);
+    console.log(logObjects.length);
+    if (logObjects.length > 0) {
+      logText.innerHTML = '';
+    }
+    // Loop through the array of response objects
+    logObjects.forEach(function(element){
+      // Create and append each element to the #log-text span
+      var paragraph = document.createElement('P');
+      var text = document.createTextNode(element.timestamp + ' - ' + element.listitem);
+      paragraph.appendChild(text);
+      logText.appendChild(paragraph);
+    });
   }
 
   // Execute AJAX request if page is ready -------------------------------------

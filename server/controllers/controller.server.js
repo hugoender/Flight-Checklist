@@ -47,15 +47,6 @@ function clickHandler (db) {
       if (err) throw err;
       res.json(result);
     });
-
-    //console.log(json(logs.find({})));
-    // var clickProjection = { '_id': false, 'timestamp': true, 'listitem': true};
-    // var test = logs.find({});
-    // , function (err, result){
-    //   if (err) throw err;
-    //   res.json(result);
-    // });
-    // res.send("Hello ALLO!");
   };
 
   this.deleteLog = function (req, res){
