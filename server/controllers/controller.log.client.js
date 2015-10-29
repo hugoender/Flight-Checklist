@@ -2,6 +2,8 @@
 
 'use strict';
 
+var logText = document.querySelector('#log-text');
+
 // IIFE in order to not pollute namespace
 (function () {
 
@@ -22,30 +24,13 @@
     document.addEventListener('DOMContentLoaded', fn, false);
   }
 
-  // AJAX request --------------------------------------------------------------
-  // function ajaxRequest(method, url, callback) {
-  //   $.ajax({
-  //     method: method,
-  //     url: url,
-  //     dataType: "jsonp",
-  //     success: function(parsed_json){
-  //       callback(parsed_json);
-  //     }
-  //   });
-  // }
-
   // AJAX request function -----------------------------------------------------
   function ajaxRequest(method, url, callback) {
-    console.log('Entered AJAX');
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         callback(xmlhttp.response);
-      }
-      else {
-        console.log(xmlhttp.readyState);
-        console.log(xmlhttp.status);
       }
     };
 
@@ -54,13 +39,25 @@
   }
 
   // Parse AJAX response data and place it in log.html -------------------------
-  function updateLog(data) {
-    console.log('Entered updateLog');
-    var logObject = JSON.parse(data);
-    logText.innerHTML = logObject.timestamp + ' - ' + logObject.listitem;
+  function getLog(data) {
+    // If log has entries, remove the "No Log Entries" text
+    var logObjects = JSON.parse(data);
+    // Check to see if log is empty
+    if (logObjects.length === 0) {
+      logText.innerHTML = 'No logs';
+    }
+    // Loop through the array of response objects
+    logObjects.forEach(function(element){
+      logText.innerHTML = 'No logs';
+      // Create and append each element to the #log-text span
+      var paragraph = document.createElement('P');
+      var text = document.createTextNode(element.timestamp + ' - ' + element.listitem);
+      paragraph.appendChild(text);
+      logText.appendChild(paragraph);
+    });
   }
 
   // Execute AJAX request if page is ready -------------------------------------
-  ready(ajaxRequest('GET', apiURL, updateLog));
+  ready(ajaxRequest('GET', apiURL, getLog));
 
 })();
