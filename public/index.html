@@ -19,22 +19,43 @@
 </head>
 
 <body>
-  <h1 class="text-center">Preflight Checklist</h1>
-
-  <div class="checkbox text-center">
-    <label id="list-prop"><input type="checkbox"> Check props</label>
-  </div>
-  <div class="checkbox text-center">
-    <label id="list-batt"><input type="checkbox"> Check battery</label>
-  </div>
-  <div class="checkbox text-center">
-    <label id="list-gps"><input type="checkbox"> Check GPS</label>
-  </div>
+  <h1 class="text-center">DJI Checklist</h1>
 
   <div class="text-center">
-    <!-- <button id="log-button" class="btn btn-primary">Logs</button> -->
+    <a id="new-flight" class="btn btn-primary" href="#" role="button">New Flight</a>
     <a class="btn btn-primary" href="/log" role="button">View Log</a>
   </div>
+
+  <h3 class="text-center">Aircraft Pre-Flight</h3>
+
+  <!-- <div class="container-fluid check-list"> -->
+      <!-- <label id="list-prop"><input type="checkbox"> Check props</label> -->
+      <!-- <input type="checkbox"> Check props -->
+    <!-- <div class="checkbox"> -->
+      <!-- <label id="list-batt"><input type="checkbox"> Check battery</label> -->
+    <!-- </div> -->
+    <!-- <div class="checkbox"> -->
+      <!-- <label id="list-gps"><input type="checkbox"> Check GPS</label> -->
+    <!-- </div> -->
+  <!-- </div> -->
+
+  <h3 class="text-center">Controller Pre-Flight</h3>
+
+  <h3 class="text-center">Controller Before Engine Start</h3>
+
+  <h3 class="text-center">Aircraft Before Engine Start</h3>
+
+  <h3 class="text-center">Takeoff</h3>
+
+  <h3 class="text-center">Pre-Landing</h3>
+
+  <h3 class="text-center">Landing</h3>
+
+  <h3 class="text-center">Aircraft Port-Landing</h3>
+
+  <h3 class="text-center">Controller Post-Landing</h3>
+
+  <h3 class="text-center">Pre-Departure</h3>
 
   <!-- <div class="text-center">
     <span id="log-text">No Logs</span>
@@ -43,10 +64,13 @@
   <!-- Scripts -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- jQuery Mobile (necessary for swipe) -->
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <!-- Bootstrap js -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- Controllers -->
   <script src="/controllers/controller.client.js" type="text/javascript"></script>
+
 </body>
 
 </html>

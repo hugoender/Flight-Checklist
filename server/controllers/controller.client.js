@@ -2,13 +2,25 @@
 
 'use strict';
 
+// $("h3").on("swipe", function(){
+//   $(this).hide();
+//   console.log('swipe');
+//   // if ($("this>input").prop('checked')) {
+//   //   $("this>input").prop('checked', false);
+//   // }
+//   // else {
+//   //   $("this>input").prop('checked', true)
+//   // }
+// });
+
 // IIFE in order to not pollute namespace
-(function () {
+(function ($) {
 
   // Define API endpoint
   var apiURL = 'http://localhost:3000/api/logs';
   // Define variables for different list items
   var logProp = document.querySelector('#list-prop');
+  //var logClear = document.querySelector('#clear-log');
 
   // AJAX request --------------------------------------------------------------
   // function ajaxRequest(method, url, callback) {
@@ -43,4 +55,17 @@
     });
   }, false);
 
-})();
+  // Check item on swipe
+  // $(document).ready(function(){
+    $("h3").on("swipe", function(){
+      $(this).hide();
+      console.log('swipe');
+      // if ($("this>input").prop('checked')) {
+      //   $("this>input").prop('checked', false);
+      // }
+      // else {
+      //   $("this>input").prop('checked', true)
+      // }
+    });
+  // });
+})(window.jQuery);

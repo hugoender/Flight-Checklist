@@ -2,13 +2,12 @@
 
 'use strict';
 
-var logText = document.querySelector('#log-text');
-
 // IIFE in order to not pollute namespace
 (function () {
-
   // Define API endpoint
   var apiURL = 'http://localhost:3000/api/logs';
+  // Define variables for different list items
+  var logClear = document.querySelector('#clear-log');
   var logText = document.querySelector('#log-text');
 
   // Make sure page is ready before executing callback function ----------------
@@ -48,7 +47,6 @@ var logText = document.querySelector('#log-text');
     }
     // Loop through the array of response objects
     logObjects.forEach(function(element){
-      logText.innerHTML = 'No logs';
       // Create and append each element to the #log-text span
       var paragraph = document.createElement('P');
       var text = document.createTextNode(element.timestamp + ' - ' + element.listitem);
@@ -59,5 +57,12 @@ var logText = document.querySelector('#log-text');
 
   // Execute AJAX request if page is ready -------------------------------------
   ready(ajaxRequest('GET', apiURL, getLog));
+
+  // Event listeners -----------------------------------------------------------
+  logClear.addEventListener('click', function(){
+    ajaxRequest('DELETE', apiURL, function(){
+      ajaxRequest('GET', apiURL, getLog);
+    });
+  }, false);
 
 })();

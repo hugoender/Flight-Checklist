@@ -1,3 +1,19 @@
-h1 {
+body {
   color: black;
+}
+
+.check-list {
+  padding: 1em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1em auto;
+}
+
+.log-field {
+  padding: 1em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1em auto;
 }
