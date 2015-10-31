@@ -2,19 +2,31 @@
 
 'use strict';
 
-// $("h3").on("swipe", function(){
-//   $(this).hide();
-//   console.log('swipe');
-//   // if ($("this>input").prop('checked')) {
-//   //   $("this>input").prop('checked', false);
-//   // }
-//   // else {
-//   //   $("this>input").prop('checked', true)
-//   // }
-// });
+$('input').on('swipe', function(){
+  // $(this).hide();
+  console.log('swipe');
+  if ($(this).prop('checked')) {
+    $(this).prop('checked', false);
+  }
+  else {
+    $(this).prop('checked', true)
+  }
+});
+
+// Change background color of list item and disable checkbox
+$('label').on('click', function () {
+  $(this).addClass('checked');
+  // $(this).firstChild.disabled = true;
+  // alert(this.nextSibling);
+});
+
+// *!*!!*!*!*! Need to figure out how to disable checkbox
+$('input').change(function() {
+  $(this).disabled = true;
+});
 
 // IIFE in order to not pollute namespace
-(function ($) {
+(function () {
 
   // Define API endpoint
   var apiURL = 'http://localhost:3000/api/logs';
@@ -57,15 +69,15 @@
 
   // Check item on swipe
   // $(document).ready(function(){
-    $("h3").on("swipe", function(){
-      $(this).hide();
-      console.log('swipe');
-      // if ($("this>input").prop('checked')) {
-      //   $("this>input").prop('checked', false);
-      // }
-      // else {
-      //   $("this>input").prop('checked', true)
-      // }
-    });
+    // $("h3").on("swipe", function(){
+    //   $(this).hide();
+    //   console.log('swipe');
+    //   // if ($("this>input").prop('checked')) {
+    //   //   $("this>input").prop('checked', false);
+    //   // }
+    //   // else {
+    //   //   $("this>input").prop('checked', true)
+    //   // }
+    // });
   // });
-})(window.jQuery);
+})();

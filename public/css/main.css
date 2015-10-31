@@ -2,6 +2,17 @@ body {
   color: black;
 }
 
+label.checkbox-text {
+  background-color: #c7c7c7;
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+}
+
+label.checkbox-text.checked{
+  background-color: green !important;
+}
+
 .check-list {
   padding: 1em;
   width: -webkit-fit-content;
@@ -17,3 +28,9 @@ body {
   width: fit-content;
   margin: 1em auto;
 }
+
+/*.checkbox-box {
+  position: fixed;
+  margin-left: -9999px;
+  visibility: hidden;
+}*/
