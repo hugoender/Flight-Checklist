@@ -21,4 +21,7 @@ module.exports = function (app, db) {
       .get(clickHandler.getLog)
       .post(clickHandler.addLog)
       .delete(clickHandler.deleteLog);
+
+  app.route('/api/logs/button')
+      .post(clickHandler.addNewFlight);
 };

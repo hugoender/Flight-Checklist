@@ -18,6 +18,18 @@
 function clickHandler (db) {
   var logs = db.collection('logs');
 
+  this.addNewFlight = function (req, res){
+    logs.insert(
+      {
+        newFlightText: '-------- New Flight --------'
+      },
+      function (err, result){
+        if(err) throw err;
+        // Required in order to be able to process additional CRUD operations
+        res.json(result);
+    });
+  }
+
   this.addLog = function (req, res){
     // Prepend 0 to value if it's less than 10
     function leadingZero (value) {

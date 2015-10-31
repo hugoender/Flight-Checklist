@@ -2,36 +2,36 @@
 
 'use strict';
 
-$('input').on('swipe', function(){
-  // $(this).hide();
-  console.log('swipe');
-  if ($(this).prop('checked')) {
-    $(this).prop('checked', false);
-  }
-  else {
-    $(this).prop('checked', true)
-  }
-});
-
-// Change background color of list item and disable checkbox
-$('label').on('click', function () {
-  $(this).addClass('checked');
-  // $(this).firstChild.disabled = true;
-  // alert(this.nextSibling);
-});
-
-// *!*!!*!*!*! Need to figure out how to disable checkbox
-$('input').change(function() {
-  $(this).disabled = true;
-});
+// $('input').on('swipe', function(){
+//   // $(this).hide();
+//   console.log('swipe');
+//   if ($(this).prop('checked')) {
+//     $(this).prop('checked', false);
+//   }
+//   else {
+//     $(this).prop('checked', true)
+//   }
+// });
+//
+// // Change background color of list item and disable checkbox
+// $('label').on('click', function () {
+//   $(this).addClass('checked');
+//   // $(this).firstChild.disabled = true;
+//   // alert(this.nextSibling);
+// });
+//
+// // *!*!!*!*!*! Need to figure out how to disable checkbox
+// $('input').change(function() {
+//   $(this).disabled = true;
+// });
 
 // IIFE in order to not pollute namespace
-(function () {
+// (function () {
 
   // Define API endpoint
   var apiURL = 'http://localhost:3000/api/logs';
-  // Define variables for different list items
-  var logProp = document.querySelector('#list-prop');
+  // Define variables for different list items (use <input> id not <label> id)
+  var logProp = document.querySelector('#list1');
   //var logClear = document.querySelector('#clear-log');
 
   // AJAX request --------------------------------------------------------------
@@ -47,7 +47,7 @@ $('input').change(function() {
   // }
 
   // AJAX request function -----------------------------------------------------
-  function ajaxRequest(method, url, callback) {
+  function ajaxRequest(method, url, type, callback) {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
@@ -56,16 +56,34 @@ $('input').change(function() {
       }
     };
 
-    xmlhttp.open(method, url, true);
+    xmlhttp.open(method, url+'/'+type, true);
     xmlhttp.send();
   }
 
+  // Clear checklist checks ----------------------------------------------------
+  function clearChecks() {
+    $('input[type=checkbox]').each(function(){
+      this.checked = false;
+    });
+  }
+
   // Event listeners -----------------------------------------------------------
-  logProp.addEventListener('click', function(){
-    ajaxRequest('POST', apiURL, function(data){
+  $('#new-flight').on('click', function(){
+    clearChecks();
+    ajaxRequest('POST', apiURL, $(this).attr('type'), function(){
       return;
     });
-  }, false);
+  });
+
+  $('input[type=checkbox]').change(function(){
+    // console.log(this.attributes);
+    if (this.checked){
+      ajaxRequest('POST', apiURL, '', function(data){
+        return;
+      });
+      $(this).prop('disabled', true);
+    }
+  });
 
   // Check item on swipe
   // $(document).ready(function(){
@@ -80,4 +98,4 @@ $('input').change(function() {
     //   // }
     // });
   // });
-})();
+// })();
