@@ -12,65 +12,107 @@
 //     $(this).prop('checked', true)
 //   }
 // });
+
+// Define API endpoint -------------------------------------------------------
+var apiURL = 'http://localhost:3000/api/logs';
+
+// AJAX request (VanillaJS) --------------------------------------------------
+// function ajaxRequest(method, url, type, id, callback) {
+//   var xmlhttp = new XMLHttpRequest();
+//   //var params = ''
 //
-// // Change background color of list item and disable checkbox
-// $('label').on('click', function () {
-//   $(this).addClass('checked');
-//   // $(this).firstChild.disabled = true;
-//   // alert(this.nextSibling);
-// });
+//   xmlhttp.onreadystatechange = function() {
+//     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+//       callback(xmlhttp.response);
+//     }
+//   };
+//   // Check to see if CRUD operation comes with an id parameter
+//   if (id.length) {
+//     console.log(url+'/'+type+'?elementID='+id);
+//     xmlhttp.open(method, url+'/'+type+'?elementID='+id, true);
+//   }
+//   else {
+//     xmlhttp.open(method, url+'/'+type, true);
+//   }
 //
-// // *!*!!*!*!*! Need to figure out how to disable checkbox
-// $('input').change(function() {
-//   $(this).disabled = true;
-// });
+//   //xmlhttp.send(params);
+//   xmlhttp.send();
+// }
 
-// IIFE in order to not pollute namespace
-// (function () {
-
-  // Define API endpoint
-  var apiURL = 'http://localhost:3000/api/logs';
-  // Define variables for different list items (use <input> id not <label> id)
-  var logProp = document.querySelector('#list1');
-  //var logClear = document.querySelector('#clear-log');
-
-  // AJAX request --------------------------------------------------------------
-  // function ajaxRequest(method, url, callback) {
-  //   $.ajax({
-  //     method: method,
-  //     url: url,
-  //     dataType: "jsonp",
-  //     success: function(parsed_json){
-  //       callback(parsed_json);
-  //     }
-  //   });
-  // }
-
-  // AJAX request function -----------------------------------------------------
-  function ajaxRequest(method, url, type, callback) {
-    var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        callback(xmlhttp.response);
-      }
-    };
-
-    xmlhttp.open(method, url+'/'+type, true);
-    xmlhttp.send();
+// Parse AJAX response checkstatus data and toggle checkboxes accordingly ----
+function setCheckboxes(data) {
+  // console.log('Entered setCheckboxes');
+  // If log has entries, remove the "No Log Entries" text
+  // console.log(data);
+  var checkObjects = data;
+  // Check to see if 'checks' is empty
+  if (checkObjects.length === 0) {
+    return;
   }
+  // Loop through the array of response objects to see which items are checked
+  checkObjects.forEach(function(element){
+    var idName = element.checkedItems;
+    // if (idName.length > 0){
+      var id = '#'+idName;
+      // Check, disable, and set 'checked' class for input elements with ID
+      $(id).prop('checked', true);
+      $(id).prop('disabled', true);
+      $(id).addClass('checked');
+    // }
+  });
+}
 
-  // Clear checklist checks ----------------------------------------------------
-  function clearChecks() {
-    $('input[type=checkbox]').each(function(){
-      this.checked = false;
-    });
-  }
+// Execute AJAX request if page is ready to retrieve checkbox status ---------
+// ready(ajaxRequest('GET', apiURL, 'checkstatus', '', setCheckboxes));
+
+// Clear checklist checks ----------------------------------------------------
+function clearChecks() {
+  // Uncheck and enable all checkboxes
+  $('input[type=checkbox]').each(function(){
+    this.checked = false;
+    $(this).prop('disabled', false);
+  });
+
+  // Remove 'checked' class from label so that it removes highlight
+  // $('.checked').each(function(){
+  //   $(this).closest('.checkbox-text, .checkbox').removeClass('checked');
+  // });
+
+  // Delete all 'checks' collection entries
+  ajaxRequest('DELETE', apiURL, 'checkstatus', '', function(){
+    return;
+  });
+}
+
+// AJAX request (jQuery) -----------------------------------------------------
+function ajaxRequest(method, url, type, id, callback) {
+  // console.log('req');
+  $.ajax({
+    method: method,
+    url: url+'/'+type,
+    data:
+      {
+        checkedItems: id
+      },
+    dataType: "json",
+    success: function(parsed_json){
+      // console.log(url+'/'+type);
+      // console.log(parsed_json);
+      callback(parsed_json);
+    }
+  });
+}
+
+// Execute when page has finished loading ======================================
+$(document).ready(function(){
+  // console.log('test');
+  // Get the status of the checkboxes and update page accordingly --------------
+  ajaxRequest('GET', apiURL, 'checkstatus', '', setCheckboxes);
 
   // Event listeners -----------------------------------------------------------
   $('#new-flight').on('click', function(){
     clearChecks();
-    ajaxRequest('POST', apiURL, $(this).attr('type'), function(){
+    ajaxRequest('POST', apiURL, $(this).attr('type'), $(this).attr('id'), function(){
       return;
     });
   });
@@ -78,24 +120,30 @@
   $('input[type=checkbox]').change(function(){
     // console.log(this.attributes);
     if (this.checked){
-      ajaxRequest('POST', apiURL, '', function(data){
+      // Add 'checked' class for highlighting
+      // $(this).parent('label').addClass('checked');
+      // Disable checkbox
+      $(this).prop('disabled', true);
+      // Send checked item id to set check status in 'checks' collection
+      ajaxRequest('POST', apiURL, 'checkstatus', $(this).attr('id'), function(data){
         return;
       });
-      $(this).prop('disabled', true);
+      // Send log entry to 'logs' collection
+      ajaxRequest('POST', apiURL, '', '', function(data){
+        return;
+      });
+
     }
   });
+});
 
-  // Check item on swipe
-  // $(document).ready(function(){
-    // $("h3").on("swipe", function(){
-    //   $(this).hide();
-    //   console.log('swipe');
-    //   // if ($("this>input").prop('checked')) {
-    //   //   $("this>input").prop('checked', false);
-    //   // }
-    //   // else {
-    //   //   $("this>input").prop('checked', true)
-    //   // }
-    // });
-  // });
-// })();
+// Check item on swipe
+// $("h3").on("swipe", function(){
+//   $(this).hide();
+//   console.log('swipe');
+//   // if ($("this>input").prop('checked')) {
+//   //   $("this>input").prop('checked', false);
+//   // }
+//   // else {
+//   //   $("this>input").prop('checked', true)
+//   // }

@@ -2,16 +2,39 @@ body {
   color: black;
 }
 
+input[type=checkbox] {
+  position: fixed;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+
 label.checkbox-text {
-  background-color: #c7c7c7;
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
   height: 40px;
   width: 100%;
   padding: 10px;
+  margin: 10px;
+  -webkit-box-shadow: 0px 6px 15px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 15px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 15px -5px rgba(0,0,0,0.75);
 }
 
-label.checkbox-text.checked{
-  background-color: green !important;
+:checked + label {
+  background-color: #b9ffb9;
+  border: none;
+  -webkit-box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
 }
+
+/*label.checkbox-text.checked{
+  background-color: #b9ffb9;
+  border: none;
+  -webkit-box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
+}*/
 
 .check-list {
   padding: 1em;

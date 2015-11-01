@@ -16,8 +16,45 @@
 // monthArr[11] = "December";
 
 function clickHandler (db) {
+  // Assign db collections to variables
   var logs = db.collection('logs');
+  var checks = db.collection('checks');
 
+  // 'checks' collection functions =============================================
+  // Get checkbox status entries -----------------------------------------------
+  this.getStatus = function (req, res){
+    var logProjection = { '_id': false };
+    // Cannot use logs.find({}, logProjection, function...) because I am using
+    // Mongo Node driver that is v2.0+
+    checks.find().project(logProjection).toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+  };
+
+  // Add checkbox status entry -------------------------------------------------
+  this.addStatus = function (req, res){
+    // Extract elementID parameter from request URL
+    var elementID = req.body.elementID;
+    // console.log(req.body);
+    // Insert elementID into 'checks' collection
+    checks.insert(req.body, function (err, result){
+        if (err) throw err;
+        // Required in order to be able to process additional CRUD operations
+        res.json(result);
+      });
+  };
+
+  // Clear the 'checks' collection ---------------------------------------------
+  this.deleteStatus = function (req, res){
+    // Remove all 'checks' collection entries
+    checks.remove({});
+    // Required in order to be able to process additional CRUD operations
+    res.end();
+  }
+
+  // 'logs' collection functions ===============================================
+  // Add New Flight log entry --------------------------------------------------
   this.addNewFlight = function (req, res){
     logs.insert(
       {
@@ -28,8 +65,9 @@ function clickHandler (db) {
         // Required in order to be able to process additional CRUD operations
         res.json(result);
     });
-  }
+  };
 
+  // Add log entries -----------------------------------------------------------
   this.addLog = function (req, res){
     // Prepend 0 to value if it's less than 10
     function leadingZero (value) {
@@ -57,6 +95,7 @@ function clickHandler (db) {
     });
   };
 
+  // Get all log entries -------------------------------------------------------
   this.getLog = function (req, res){
     var logProjection = { '_id': false };
     // Cannot use logs.find({}, logProjection, function...) because I am using
@@ -67,6 +106,7 @@ function clickHandler (db) {
     });
   };
 
+  // Delete all log entries ----------------------------------------------------
   this.deleteLog = function (req, res){
     logs.remove({});
     // Required in order to be able to process additional CRUD operations
@@ -74,4 +114,5 @@ function clickHandler (db) {
   };
 }
 
+// Export clickHandler methods =================================================
 module.exports = clickHandler;
