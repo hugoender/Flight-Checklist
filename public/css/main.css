@@ -26,6 +26,11 @@ label.checkbox-text {
   margin: 0px;
 }*/
 
+
+:disabled + label {
+  background-color: #dfdfdf;
+}
+
 :checked + label {
   background-color: #b9ffb9;
   border: none;
@@ -42,12 +47,9 @@ label.checkbox-text {
   box-shadow: inset 0px 6px 15px -5px rgba(0,0,0,0.75);
 }*/
 
+/*Hide check-list until the initial style has been applied with JS*/
 .check-list {
-  padding: 1em;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 1em auto;
+  visibility: hidden;
 }
 
 .log-field {

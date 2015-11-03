@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Flight Checklist</title>
+    <title>Flight Checkitem</title>
 
     <!-- Stylesheets -->
     <!-- Normalize -->
@@ -21,10 +21,17 @@
     <!-- Main -->
     <link href="/public/css/main.css" rel="stylesheet" type="text/css">
 
+    <!-- These scripts are placed here so they load before the list does -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Script to update status of checkboxes -->
+    <script src="/controllers/updatestyle.client.js"></script>
+
 </head>
 
 <body>
-  <h1 class="text-center">DJI Checklist</h1>
+
+  <h1 class="text-center">DJI Checkitem</h1>
 
   <div class="text-center">
     <button id="new-flight" class="btn btn-success" type="button">New Flight</button>
@@ -34,36 +41,36 @@
   <h3 class="text-center">Aircraft Pre-Flight</h3>
 
   <div class="container-fluid">
-    <div class="text-center">
+    <div class="text-center check-list">
       <div class="checkbox">
-        <input id="list1" type="checkbox"><label class="checkbox-text" for="list1">Inspect landing gear for damage</label>
+        <input id="item1" type="checkbox"><label class="checkbox-text" for="item1">Inspect landing gear for damage</label>
       </div>
       <div class="checkbox">
-        <input id="list2" type="checkbox"><label class="checkbox-text" for="list2">Inspect plastic shell for damage</label>
+        <input id="item2" type="checkbox" disabled><label class="checkbox-text" for="item2">Inspect plastic shell for damage</label>
       </div>
       <div class="checkbox">
-        <input id="list3" type="checkbox"><label class="checkbox-text" for="list3">Inspect flight battery for damage</label>
+        <input id="item3" type="checkbox" disabled><label class="checkbox-text" for="item3">Inspect flight battery for damage</label>
       </div>
       <div class="checkbox">
-        <input id="list4" type="checkbox"><label class="checkbox-text" for="list4">Inspect flight props for damage</label>
+        <input id="item4" type="checkbox" disabled><label class="checkbox-text" for="item4">Inspect flight props for damage</label>
       </div>
       <div class="checkbox">
-        <input id="list5" type="checkbox"><label class="checkbox-text" for="list5">Lens cap</label>
+        <input id="item5" type="checkbox" disabled><label class="checkbox-text" for="item5">Lens cap</label>
       </div>
       <div class="checkbox">
-        <input id="list6" type="checkbox"><label class="checkbox-text" for="list6">ND Filter</label>
+        <input id="item6" type="checkbox" disabled><label class="checkbox-text" for="item6">ND Filter</label>
       </div>
       <div class="checkbox">
-        <input id="list7" type="checkbox"><label class="checkbox-text" for="list7">Gimbal Clamp</label>
+        <input id="item7" type="checkbox" disabled><label class="checkbox-text" for="item7">Gimbal Clamp</label>
       </div>
       <div class="checkbox">
-        <input id="list8" type="checkbox"><label class="checkbox-text" for="list8">Micro SD Card</label>
+        <input id="item8" type="checkbox" disabled><label class="checkbox-text" for="item8">Micro SD Card</label>
       </div>
       <div class="checkbox">
-        <input id="list9" type="checkbox"><label class="checkbox-text" for="list9">Flight Battery</label>
+        <input id="item9" type="checkbox" disabled><label class="checkbox-text" for="item9">Flight Battery</label>
       </div>
       <div class="checkbox">
-        <input id="list10" type="checkbox"><label class="checkbox-text" for="list10">Flight Propellers</label>
+        <input id="item10" type="checkbox" disabled><label class="checkbox-text" for="item10">Flight Propellers</label>
       </div>
     </div>
   </div>
@@ -92,8 +99,6 @@
   <!-- Scripts -->
   <!-- jQuery Mobile Custom (touch features only) -->
   <!-- <script src="/controllers/jquery.mobile.custom.min.js"></script> -->
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Bootstrap js -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- Controllers -->

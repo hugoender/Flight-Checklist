@@ -35,7 +35,7 @@ function clickHandler (db) {
   // Add checkbox status entry -------------------------------------------------
   this.addStatus = function (req, res){
     // Extract elementID parameter from request URL
-    var elementID = req.body.elementID;
+    // var elementID = req.body.elementID;
     // console.log(req.body);
     // Insert elementID into 'checks' collection
     checks.insert(req.body, function (err, result){
