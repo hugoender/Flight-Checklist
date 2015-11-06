@@ -90,8 +90,8 @@ $(document).ready(function(){
       // Disable checkbox
       $(this).prop('disabled', true);
       // Enable next checkbox
-      console.log($(this).next(':checkbox'));
-      $(this).next().prop('disabled', false);
+      // *!*!*! What happens when it reaches the end of list?
+      $(this).parent().next().children('input').prop('disabled', false);
       // Send checked item id to set check status in 'checks' collection
       ajaxRequest('POST', apiURL, 'checkstatus', $(this).attr('id'), function(data){
         return;
