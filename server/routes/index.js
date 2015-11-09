@@ -25,9 +25,10 @@ module.exports = function (app, db) {
   app.route('/api/logs/button')
       .post(clickHandler.addNewFlight);
 
+  // !*!*!*! Need to refactor these so that I don't need checkstatus api endpoint
   app.route('/api/logs/checkstatus')
-      .get(clickHandler.getStatus)
       .post(clickHandler.addStatus)
-      .delete(clickHandler.deleteStatus);
+      .delete(clickHandler.deleteStatus)
+      .get(clickHandler.getStatus);
 
 };

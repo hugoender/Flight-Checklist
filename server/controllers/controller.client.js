@@ -39,6 +39,23 @@ var apiURL = 'http://localhost:3000/api/logs';
 //   xmlhttp.send();
 // }
 
+// AJAX request (jQuery) -----------------------------------------------------
+function ajaxRequest(method, url, type, id, text, callback) {
+  $.ajax({
+    method: method,
+    url: url+'/'+type,
+    data:
+      {
+        checkedItem: id,
+        checkedItemText: text
+      },
+    dataType: "json",
+    success: function(parsed_json){
+      callback(parsed_json);
+    }
+  });
+}
+
 // Clear checklist checks ----------------------------------------------------
 function clearChecks() {
   // Uncheck and enable all checkboxes
@@ -59,28 +76,12 @@ function clearChecks() {
   });
 }
 
-// AJAX request (jQuery) -----------------------------------------------------
-function ajaxRequest(method, url, type, id, callback) {
-  $.ajax({
-    method: method,
-    url: url+'/'+type,
-    data:
-      {
-        checkedItems: id
-      },
-    dataType: "json",
-    success: function(parsed_json){
-      callback(parsed_json);
-    }
-  });
-}
-
 // Execute when page has finished loading ======================================
 $(document).ready(function(){
   // Event listeners -----------------------------------------------------------
   $('#new-flight').on('click', function(){
     clearChecks();
-    ajaxRequest('POST', apiURL, $(this).attr('type'), $(this).attr('id'), function(){
+    ajaxRequest('POST', apiURL, $(this).attr('type'), $(this).attr('id'), '', function(){
       return;
     });
   });
@@ -93,11 +94,11 @@ $(document).ready(function(){
       // *!*!*! What happens when it reaches the end of list?
       $(this).parent().next().children('input').prop('disabled', false);
       // Send checked item id to set check status in 'checks' collection
-      ajaxRequest('POST', apiURL, 'checkstatus', $(this).attr('id'), function(data){
+      ajaxRequest('POST', apiURL, 'checkstatus', $(this).attr('id'), '', function(data){
         return;
       });
       // Send log entry to 'logs' collection
-      ajaxRequest('POST', apiURL, '', '', function(data){
+      ajaxRequest('POST', apiURL, '', $(this).attr('id'), $(this).siblings('label').text(), function(data){
         return;
       });
 

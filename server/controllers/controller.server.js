@@ -69,6 +69,8 @@ function clickHandler (db) {
 
   // Add log entries -----------------------------------------------------------
   this.addLog = function (req, res){
+    // Assign list item text from request body to variable
+    var listItemText = req.body.checkedItemText;
     // Prepend 0 to value if it's less than 10
     function leadingZero (value) {
       return ('0'+value).slice(-2);
@@ -86,13 +88,12 @@ function clickHandler (db) {
     logs.insert(
       {
         timestamp: formattedTime,
-        listitem: 'test1'
+        listitem: listItemText
       },
       function (err, result){
         if(err) throw err;
         // Required in order to be able to process additional CRUD operations
-        res.json(result);
-    });
+      });
   };
 
   // Get all log entries -------------------------------------------------------

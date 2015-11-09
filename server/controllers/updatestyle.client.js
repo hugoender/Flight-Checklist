@@ -12,7 +12,7 @@ function ajaxRequest(method, url, type, id, callback) {
     url: url+'/'+type,
     data:
       {
-        checkedItems: id
+        checkedItem: id
       },
     dataType: "json",
     success: function(parsed_json){
@@ -35,7 +35,7 @@ function setCheckboxes(data) {
   // }
   // Loop through the array of response objects to see which items are checked
   checkObjects.forEach(function(element){
-    var idName = element.checkedItems;
+    var idName = element.checkedItem;
     lastID = '#'+idName;
     // Check, disable, and set 'checked' class for input elements with ID
     $(lastID).prop('checked', true);
