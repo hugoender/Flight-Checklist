@@ -9,3 +9,7 @@ Flight checklist for DJI Phantom
 * App hangs when you click **View Log** button after checking 6 or more list items. Tried increasing memory limit of MongoDB using `ulimit -n 2048` command before initializing db with `mongod` but did not fix issue. Stopping browser and then clicking **View Log** button again makes it work fine again.
 * When you hold down click on **New Flight** button, the background of button turns green
 * After clicking **New Flight** button, there is a blue border
+* Add date to New Flight text in log
+* Make one checklist item per page and add picture and big check box
+* Devise better system for creating check list and their corresponding IDs
+* Record number of successful flights and have achievements or airtime awards

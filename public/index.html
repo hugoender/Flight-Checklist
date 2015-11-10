@@ -37,61 +37,203 @@
     <button id="new-flight" class="btn btn-success" type="button">New Flight</button>
     <a class="btn btn-info" href="/log" role="button">View Log</a>
   </div>
-
-  <h3 class="text-center">Aircraft Pre-Flight</h3>
+  <!-- Added data-toggle collapse to header to collapse list -->
+  <h3 class="text-center" data-toggle="collapse" data-target="#aircraft-preflight">Aircraft Pre-Flight</h3>
 
   <div class="container-fluid">
-    <div class="text-center check-list">
+    <div id="aircraft-preflight" class="text-center check-list">
       <div class="checkbox">
-        <input id="item1" type="checkbox"><label class="checkbox-text" for="item1">Inspect landing gear for damage</label>
+        <input id="item1" type="checkbox"><label class="checkbox-text" for="item1">Inspect aircraft for physical damage</label>
       </div>
       <div class="checkbox">
-        <input id="item2" type="checkbox" disabled><label class="checkbox-text" for="item2">Inspect plastic shell for damage</label>
+        <input id="item2" type="checkbox" disabled><label class="checkbox-text" for="item2">Lens Cap | Removed/Stowed</label>
       </div>
       <div class="checkbox">
-        <input id="item3" type="checkbox" disabled><label class="checkbox-text" for="item3">Inspect flight battery for damage</label>
+        <input id="item3" type="checkbox" disabled><label class="checkbox-text" for="item3">ND Filter</label>
       </div>
       <div class="checkbox">
-        <input id="item4" type="checkbox" disabled><label class="checkbox-text" for="item4">Inspect flight props for damage</label>
+        <input id="item4" type="checkbox" disabled><label class="checkbox-text" for="item4">Gimbal Clamp | Removed/Stowed</label>
       </div>
       <div class="checkbox">
-        <input id="item5" type="checkbox" disabled><label class="checkbox-text" for="item5">Lens cap</label>
+        <input id="item5" type="checkbox" disabled><label class="checkbox-text" for="item5">MicroSD Card</label>
       </div>
       <div class="checkbox">
-        <input id="item6" type="checkbox" disabled><label class="checkbox-text" for="item6">ND Filter</label>
+        <input id="item6" type="checkbox" disabled><label class="checkbox-text" for="item6">Flight Battery</label>
       </div>
       <div class="checkbox">
-        <input id="item7" type="checkbox" disabled><label class="checkbox-text" for="item7">Gimbal Clamp</label>
-      </div>
-      <div class="checkbox">
-        <input id="item8" type="checkbox" disabled><label class="checkbox-text" for="item8">Micro SD Card</label>
-      </div>
-      <div class="checkbox">
-        <input id="item9" type="checkbox" disabled><label class="checkbox-text" for="item9">Flight Battery</label>
-      </div>
-      <div class="checkbox">
-        <input id="item10" type="checkbox" disabled><label class="checkbox-text" for="item10">Flight Propellers</label>
+        <input id="item7" type="checkbox" disabled><label class="checkbox-text" for="item7">Flight Propellers</label>
       </div>
     </div>
   </div>
 
   <h3 class="text-center">Controller Pre-Flight</h3>
 
+  <div class="container-fluid">
+    <div id="controller-preflight" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item8" type="checkbox" disabled><label class="checkbox-text" for="item8">Tablet/Phone | Mounted, Plugged In</label>
+      </div>
+      <div class="checkbox">
+        <input id="item9" type="checkbox" disabled><label class="checkbox-text" for="item9">Antennas | Positioned</label>
+      </div>
+      <div class="checkbox">
+        <input id="item10" type="checkbox" disabled><label class="checkbox-text" for="item10">Flight Mode Switch | P-GPS, P-OPTI</label>
+      </div>
+      <div class="checkbox">
+        <input id="item11" type="checkbox" disabled><label class="checkbox-text" for="item11">Controller Battery | Status Checked Fully Charged</label>
+      </div>
+    </div>
+  </div>
+
   <h3 class="text-center">Controller Before Engine Start</h3>
+
+  <div class="container-fluid">
+    <div id="controller-before-engine" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item12" type="checkbox" disabled><label class="checkbox-text" for="item12">Power On | Controller</label>
+      </div>
+      <div class="checkbox">
+        <input id="item13" type="checkbox" disabled><label class="checkbox-text" for="item13">Battery Status | Double Checked</label>
+      </div>
+      <div class="checkbox">
+        <input id="item14" type="checkbox" disabled><label class="checkbox-text" for="item14">Power On | Tablet/Phone</label>
+      </div>
+      <div class="checkbox">
+        <input id="item15" type="checkbox" disabled><label class="checkbox-text" for="item15">Set Phone to Do-Not-Disturb</label>
+      </div>
+    </div>
+  </div>
 
   <h3 class="text-center">Aircraft Before Engine Start</h3>
 
+  <div class="container-fluid">
+    <div id="aircraft-before-engine" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item16" type="checkbox" disabled><label class="checkbox-text" for="item16">Propellers | Double Check Tightness</label>
+      </div>
+      <div class="checkbox">
+        <input id="item17" type="checkbox" disabled><label class="checkbox-text" for="item17">Power On | Aircraft</label>
+      </div>
+      <div class="checkbox">
+        <input id="item18" type="checkbox" disabled><label class="checkbox-text" for="item18">Flight Battery | Status Check Fully Charge, No Errors</label>
+      </div>
+      <div class="checkbox">
+        <input id="item19" type="checkbox" disabled><label class="checkbox-text" for="item19">Aircraft Status LEDs</label>
+      </div>
+      <div class="checkbox">
+        <input id="item20" type="checkbox" disabled><label class="checkbox-text" for="item20">Aircraft on a Level Surface</label>
+      </div>
+      <div class="checkbox">
+        <input id="item21" type="checkbox" disabled><label class="checkbox-text" for="item21">Home Point | Check on Map</label>
+      </div>
+      <div class="checkbox">
+        <input id="item22" type="checkbox" disabled><label class="checkbox-text" for="item22">Return-to-Home | Set Altitude</label>
+      </div>
+      <div class="checkbox">
+        <input id="item23" type="checkbox" disabled><label class="checkbox-text" for="item23">Aircraft Orientation | Nose Away From Operator</label>
+      </div>
+    </div>
+  </div>
+
   <h3 class="text-center">Takeoff</h3>
+
+  <div class="container-fluid">
+    <div id="takeoff" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item24" type="checkbox" disabled><label class="checkbox-text" for="item24">Hover App Status | Check Ready to Fly</label>
+      </div>
+      <div class="checkbox">
+        <input id="item25" type="checkbox" disabled><label class="checkbox-text" for="item25">DJI GO App Flight Status | Safe to Fly - GPS / VPS</label>
+      </div>
+      <div class="checkbox">
+        <input id="item26" type="checkbox" disabled><label class="checkbox-text" for="item26">Launch Site | Clear Safe for Take Off</label>
+      </div>
+      <div class="checkbox">
+        <input id="item27" type="checkbox" disabled><label class="checkbox-text" for="item27">Low Hover 30sec+ | Check Hover Stability</label>
+      </div>
+      <div class="checkbox">
+        <input id="item28" type="checkbox" disabled><label class="checkbox-text" for="item28">Flight Controls | Move Each Stick, Check Stab/Control</label>
+      </div>
+    </div>
+  </div>
 
   <h3 class="text-center">Pre-Landing</h3>
 
+  <div class="container-fluid">
+    <div id="prelanding" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item29" type="checkbox" disabled><label class="checkbox-text" for="item29">Inspect landing area and approach for obstacles</label>
+      </div>
+      <div class="checkbox">
+        <input id="item30" type="checkbox" disabled><label class="checkbox-text" for="item30">Bystanders</label>
+      </div>
+    </div>
+  </div>
+
   <h3 class="text-center">Landing</h3>
 
-  <h3 class="text-center">Aircraft Port-Landing</h3>
+  <div class="container-fluid">
+    <div id="landing" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item31" type="checkbox" disabled><label class="checkbox-text" for="item31">Descend in a controlled manner</label>
+      </div>
+      <div class="checkbox">
+        <input id="item32" type="checkbox" disabled><label class="checkbox-text" for="item32">Hover at 4ft for 30sec+</label>
+      </div>
+      <div class="checkbox">
+        <input id="item33" type="checkbox" disabled><label class="checkbox-text" for="item33">Land</label>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-center">Aircraft Post-Landing</h3>
+
+  <div class="container-fluid">
+    <div id="aircraft-postlanding" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item34" type="checkbox" disabled><label class="checkbox-text" for="item34">Power Down | Aircraft</label>
+      </div>
+      <div class="checkbox">
+        <input id="item35" type="checkbox" disabled><label class="checkbox-text" for="item35">Gimbal Clamp | Installed</label>
+      </div>
+      <div class="checkbox">
+        <input id="item36" type="checkbox" disabled><label class="checkbox-text" for="item36">Lens Cap | Installed</label>
+      </div>
+      <div class="checkbox">
+        <input id="item37" type="checkbox" disabled><label class="checkbox-text" for="item37">Flight Battery | Removed and Cooled Down 5min+</label>
+      </div>
+      <div class="checkbox">
+        <input id="item38" type="checkbox" disabled><label class="checkbox-text" for="item38">Inspect aircraft for damage or stress cracks</label>
+      </div>
+    </div>
+  </div>
 
   <h3 class="text-center">Controller Post-Landing</h3>
 
+  <div class="container-fluid">
+    <div id="controller-postlanding" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item39" type="checkbox" disabled><label class="checkbox-text" for="item39">Power Down | Controller</label>
+      </div>
+    </div>
+  </div>
+
   <h3 class="text-center">Pre-Departure</h3>
+
+  <div class="container-fluid">
+    <div id="predeparture" class="text-center check-list">
+      <div class="checkbox">
+        <input id="item40" type="checkbox" disabled><label class="checkbox-text" for="item40">Trash | Pickup and throw away</label>
+      </div>
+      <div class="checkbox">
+        <input id="item41" type="checkbox" disabled><label class="checkbox-text" for="item41">Bystanders | Inform of End of Flight Operations</label>
+      </div>
+      <div class="checkbox">
+        <input id="item42" type="checkbox" disabled><label class="checkbox-text" for="item42">Double Check Nothing is Forgotten</label>
+      </div>
+    </div>
+  </div>
+
   <!-- <div class="text-center">
     <span id="log-text">No Logs</span>
   </div> -->

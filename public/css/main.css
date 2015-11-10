@@ -5,6 +5,10 @@ body {
   /*font-family: 'Open Sans', sans-serif;*/
 }
 
+.container-fluid {
+  padding: 0;
+}
+
 input[type=checkbox] {
   position: fixed;
   margin-left: -9999px;
@@ -14,21 +18,21 @@ input[type=checkbox] {
 /*Pulse animation colors*/
 @keyframes pulse {
   0% {
-    border-color: #000000;
-  }
-  50% {
     border-color: #ff0000;
   }
-  100% {
+  50% {
     border-color: #000000;
+  }
+  100% {
+    border-color: #ff0000;
   }
 }
 
 label.checkbox-text {
   /*Add pulse animation*/
   animation-name: pulse;
-  animation-duration: 2.5s;
-  animation-timing-function: ease;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 
   background-color: #fff;

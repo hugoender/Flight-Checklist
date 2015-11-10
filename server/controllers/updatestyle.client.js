@@ -36,6 +36,7 @@ function setCheckboxes(data) {
   // Loop through the array of response objects to see which items are checked
   checkObjects.forEach(function(element){
     var idName = element.checkedItem;
+    console.log(idName);
     lastID = '#'+idName;
     // Check, disable, and set 'checked' class for input elements with ID
     $(lastID).prop('checked', true);

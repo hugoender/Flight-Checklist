@@ -87,21 +87,32 @@ $(document).ready(function(){
   });
 
   $('input[type=checkbox]').change(function(){
+    var checkedID = $(this).attr('id');
+    // Extract number from ID
+    var idNum = parseInt(checkedID.replace('item', ''));
+    var nextID = '#item' + (idNum + 1);
+
     if (this.checked){
       // Disable checkbox
       $(this).prop('disabled', true);
       // Enable next checkbox
       // *!*!*! What happens when it reaches the end of list?
-      $(this).parent().next().children('input').prop('disabled', false);
+      // $(this).parent().next().children('input').prop('disabled', false);
+      $(nextID).prop('disabled', false);
       // Send checked item id to set check status in 'checks' collection
-      ajaxRequest('POST', apiURL, 'checkstatus', $(this).attr('id'), '', function(data){
+      ajaxRequest('POST', apiURL, 'checkstatus', checkedID, '', function(data){
         return;
       });
       // Send log entry to 'logs' collection
-      ajaxRequest('POST', apiURL, '', $(this).attr('id'), $(this).siblings('label').text(), function(data){
+      ajaxRequest('POST', apiURL, '', checkedID, $(this).siblings('label').text(), function(data){
         return;
       });
 
+      // Collapse current list and expand next list
+      // if (checkedID === 'item7'){
+      //   $('#aircraft-preflight').collapse('toggle');
+      //   $('#controller-preflight').collapse('toggle');
+      // }
     }
   });
 });
