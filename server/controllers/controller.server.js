@@ -53,24 +53,7 @@ function clickHandler (db) {
     res.end();
   }
 
-  // 'logs' collection functions ===============================================
-  // Add New Flight log entry --------------------------------------------------
-  this.addNewFlight = function (req, res){
-    logs.insert(
-      {
-        newFlightText: '-------- New Flight --------'
-      },
-      function (err, result){
-        if(err) throw err;
-        // Required in order to be able to process additional CRUD operations
-        res.json(result);
-    });
-  };
-
-  // Add log entries -----------------------------------------------------------
-  this.addLog = function (req, res){
-    // Assign list item text from request body to variable
-    var listItemText = req.body.checkedItemText;
+  function getTime () {
     // Prepend 0 to value if it's less than 10
     function leadingZero (value) {
       return ('0'+value).slice(-2);
@@ -85,9 +68,33 @@ function clickHandler (db) {
     var minute = leadingZero(date.getUTCMinutes());
     var second = leadingZero(date.getUTCSeconds());
     var formattedTime = year+'-'+month+'-'+day+'T'+hour+':'+minute+':'+second+' UTC';
+
+    return formattedTime;
+  }
+
+  // 'logs' collection functions ===============================================
+  // Add New Flight log entry --------------------------------------------------
+  this.addNewFlight = function (req, res){
     logs.insert(
       {
-        timestamp: formattedTime,
+        timestamp: getTime(),
+        newFlightText: 'New Flight'
+      },
+      function (err, result){
+        if(err) throw err;
+        // Required in order to be able to process additional CRUD operations
+        res.json(result);
+    });
+  };
+
+  // Add log entries -----------------------------------------------------------
+  this.addLog = function (req, res){
+    // Assign list item text from request body to variable
+    var listItemText = req.body.checkedItemText;
+
+    logs.insert(
+      {
+        timestamp: getTime(),
         listitem: listItemText
       },
       function (err, result){

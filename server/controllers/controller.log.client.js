@@ -52,7 +52,7 @@
 
       // Check to see if the current element is a checkbox item or new flight
       if (element.newFlightText){
-        var text = document.createTextNode(element.newFlightText);
+        var text = document.createTextNode('------- ' + element.timestamp + ' - ' + element.newFlightText + ' --------');
       }
       else {
         var text = document.createTextNode(element.timestamp + ' - ' + element.listitem);
