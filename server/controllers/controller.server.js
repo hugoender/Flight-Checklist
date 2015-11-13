@@ -94,6 +94,8 @@ function clickHandler (db) {
         if(err) throw err;
         // Required in order to be able to process additional CRUD operations
       });
+      // Required in order to be able to process additional CRUD operations
+      res.end();
   };
 
   // Get all log entries -------------------------------------------------------

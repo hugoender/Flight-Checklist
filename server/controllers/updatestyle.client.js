@@ -16,8 +16,6 @@ function ajaxRequest(method, url, type, id, callback) {
       },
     dataType: "json",
     success: function(parsed_json){
-      // console.log(url+'/'+type);
-      // console.log(parsed_json);
       callback(parsed_json);
     }
   });
@@ -25,18 +23,10 @@ function ajaxRequest(method, url, type, id, callback) {
 
 // Parse AJAX response checkstatus data and toggle checkboxes accordingly ------
 function setCheckboxes(data) {
-  // console.log('Entered setCheckboxes');
-  // If log has entries, remove the "No Log Entries" text
-  // console.log(data);
   var checkObjects = data;
-  // Check to see if 'checks' is empty
-  // if (checkObjects.length === 0) {
-  //   return;
-  // }
   // Loop through the array of response objects to see which items are checked
   checkObjects.forEach(function(element){
     var idName = element.checkedItem;
-    console.log(idName);
     lastID = '#'+idName;
     // Check, disable, and set 'checked' class for input elements with ID
     $(lastID).prop('checked', true);
