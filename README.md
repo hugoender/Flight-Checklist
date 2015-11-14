@@ -14,3 +14,5 @@ Flight checklist for DJI Phantom
 * Devise better system for creating check list and their corresponding IDs
 * Record number of successful flights and have achievements or airtime awards
 * ~~Not all checklist items are logged~~
+* Add credits section or page
+* Fix app title
