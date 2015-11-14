@@ -5,7 +5,7 @@
 // IIFE in order to not pollute namespace
 (function () {
   // Define API endpoint
-  var apiURL = 'http://localhost:3000/api/logs';
+  var apiURL = 'http://107.170.6.54:3000/api/logs';
   // Define variables for different list items
   var logClear = document.querySelector('#clear-log');
   var logText = document.querySelector('#log-text');
