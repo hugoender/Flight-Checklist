@@ -12,7 +12,7 @@ var app = express();
 // URLs and ports ==============================================================
 var port = 3000;
 var mongoport = 27017;
-var dburl = 'mongodb://localhost:' + mongoport + '/checklistapp';
+var dburl = 'mongodb://107.170.6.54:' + mongoport + '/checklistapp';
 
 // Connect to MongoDB ==========================================================
 mongo.connect(dburl, function(err, db){
