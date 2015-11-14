@@ -34,6 +34,11 @@ label.checkbox-text {
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  /*For iOS compatibility*/
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
 
   background-color: #fff;
   border: 1px solid #e4e4e4;
@@ -55,6 +60,8 @@ label.checkbox-text {
 :disabled + label {
   /*Disable animation*/
   animation: none;
+  /*For iOS compatibility*/
+  -webkit-animation: none;
 
   background-color: #dfdfdf;
 }
