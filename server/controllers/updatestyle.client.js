@@ -34,7 +34,14 @@ function setCheckboxes(data) {
     $(lastID).addClass('checked');
   });
 
-  $(lastID).parent().next().children('input').prop('disabled', false);
+  // Parse out the item number and convert it to integer
+  var idNumber = parseInt(lastID.replace('#item', ''), 10);
+  // Increment id number to go to next checklist item
+  idNumber++;
+  lastID = '#item' + idNumber;
+  // Find next checklist item and enable it
+  $(lastID).prop('disabled', false);
+  // $(lastID).parent().next().children('input').prop('disabled', false);
 
   // Make all list items visible now that they have been styled
   $('.check-list').css("visibility", "visible");
