@@ -1,7 +1,7 @@
 'use strict';
 
 // Define API endpoint -------------------------------------------------------
-var apiURL = 'http://107.170.6.54:3000/api/logs';
+var apiURL = 'http://localhost:3000/api/logs';
 // Last checked list item in order to enable next list item
 var lastID = '';
 
