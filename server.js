@@ -10,13 +10,13 @@ var routes = require('./server/routes/index.js');
 var app = express();
 
 // URLs and ports ==============================================================
-var port = 3000;
+var port = process.env.PORT || 3000;
 var mongoport = 27017;
 
-var dburl = 'mongodb://localhost:' + mongoport + '/checklistapp';
+var dburl = rocess.env.MONGOLAB_URI || 'mongodb://localhost:' + mongoport + '/checklistapp';
 
 // Connect to MongoDB ==========================================================
-mongo.connect(process.env.MONGOLAB_URI || dburl, function(err, db){
+mongo.connect(dburl, function(err, db){
 
   // Handle error --------------------------------------------------------------
   if (err) {
