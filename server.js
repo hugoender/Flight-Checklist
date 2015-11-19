@@ -16,7 +16,7 @@ var mongoport = 27017;
 var dburl = 'mongodb://localhost:' + mongoport + '/checklistapp';
 
 // Connect to MongoDB ==========================================================
-mongo.connect(dburl, function(err, db){
+mongo.connect(process.env.MONGOLAB_URI || dburl, function(err, db){
 
   // Handle error --------------------------------------------------------------
   if (err) {
