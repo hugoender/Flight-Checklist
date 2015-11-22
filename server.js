@@ -37,9 +37,9 @@ mongo.connect(dburl, function(err, db){
   routes(app, db);
 
   // Listen for incoming connections -------------------------------------------
-  app.listen(3000, function() {
+  app.listen(port, function() {
     // This log is only visible on server, not browser
-    console.log('Listening on port 3000...');
+    console.log('Listening on port' + port + '...');
   });
 
 });
