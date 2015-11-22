@@ -14,7 +14,7 @@
 // });
 
 // Define API endpoint -------------------------------------------------------
-var apiURL = window.location.origin || 'http://localhost:3000/api/logs';
+var apiURL = window.location.origin + '/api/logs' || 'http://localhost:3000/api/logs';
 
 // AJAX request (VanillaJS) --------------------------------------------------
 // function ajaxRequest(method, url, type, id, callback) {
