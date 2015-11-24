@@ -17,3 +17,5 @@ Flight checklist for DJI Phantom
 * Add credits section or page
 * ~~Fix app title~~
 * ~~Fix text wrap~~
+* Highlight "New Flight" items in log list
+* Order list from newest to oldest entries
