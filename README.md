@@ -16,3 +16,4 @@ Flight checklist for DJI Phantom
 * ~~Not all checklist items are logged~~
 * Add credits section or page
 * Fix app title
+* Fix text wrap

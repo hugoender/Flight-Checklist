@@ -23,7 +23,7 @@ mongo.connect(dburl, function(err, db){
   }
   else {
     // This log is only visible on server, not browser
-    console.log('MongoDB successfully connected on port' + mongoport + '.' );
+    console.log('MongoDB successfully connected on port ' + mongoport + '.' );
   }
 
   // Define middleware usage ---------------------------------------------------
@@ -39,7 +39,7 @@ mongo.connect(dburl, function(err, db){
   // Listen for incoming connections -------------------------------------------
   app.listen(port, function() {
     // This log is only visible on server, not browser
-    console.log('Listening on port' + port + '...');
+    console.log('Listening on port ' + port + '...');
   });
 
 });
