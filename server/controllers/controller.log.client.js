@@ -49,16 +49,23 @@
     logObjects.forEach(function(element){
       // Create and append each element to the #log-text span
       var paragraph = document.createElement('P');
+      var hr = document.createElement('HR');
 
       // Check to see if the current element is a checkbox item or new flight
       if (element.newFlightText){
-        var text = document.createTextNode('------- ' + element.timestamp + ' - ' + element.newFlightText + ' --------');
+        var timest = document.createTextNode(element.timestamp);
+        var text = document.createTextNode('------------- ' + element.newFlightText + ' -------------');
       }
       else {
-        var text = document.createTextNode(element.timestamp + ' - ' + element.listitem);
+        var timest = document.createTextNode(element.timestamp);
+        var text = document.createTextNode(element.listitem);
       }
+
+      hr.appendChild(timest);
+      paragraph.appendChild(hr);
       paragraph.appendChild(text);
       logText.appendChild(paragraph);
+      // logText.appendChild(hr);
     });
   }
 

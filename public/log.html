@@ -8,12 +8,35 @@
     <!-- Ensures proper rendering and touch zooming on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Turn site into web app on iPhone -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Flight Checklist Log</title>
 
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/public/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/public/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/public/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/public/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/public/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/public/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/public/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/public/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/public/img/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/public/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/public/img/favicon-16x16.png" sizes="16x16">
+
     <!-- Stylesheets -->
+    <!-- Normalize -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- Main -->
     <link href="/public/css/main.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -28,7 +51,7 @@
 
   <div class="container-fluid">
     <div class="log-field">
-      <span id="log-text"></span>
+      <span id="log-text" class="text-center"></span>
     </div>
   </div>
 
