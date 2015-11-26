@@ -48,8 +48,10 @@
     // Loop through the array of response objects
     logObjects.forEach(function(element){
       // Create and append each element to the #log-text span
-      var paragraph = document.createElement('P');
+      var paragraph1 = document.createElement('P');
+      var paragraph2 = document.createElement('P');
       var hr = document.createElement('HR');
+      var dv = document.createElement('DIV');
 
       // Check to see if the current element is a checkbox item or new flight
       if (element.newFlightText){
@@ -61,11 +63,17 @@
         var text = document.createTextNode(element.listitem);
       }
 
-      hr.appendChild(timest);
-      paragraph.appendChild(hr);
-      paragraph.appendChild(text);
-      logText.appendChild(paragraph);
+      dv.appendChild(hr);
+      paragraph1.appendChild(timest);
+      dv.appendChild(paragraph1);
+      paragraph2.appendChild(text);
+      dv.appendChild(paragraph2);
+      logText.appendChild(dv);
+
       // logText.appendChild(hr);
+      // hr.appendChild(timest);
+      // logText.appendChild(paragraph1);
+      // logText.appendChild(paragraph2);
     });
   }
 

@@ -106,7 +106,7 @@ label.checkbox-text {
 }
 
 .log-field {
-  padding: 1em;
+  padding: 0;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -122,4 +122,8 @@ label.checkbox-text {
 .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success:focus{
   background-color: #8c1bff;
   border-color: #8c1bff;
+}
+
+#log-text {
+  width: 100%;
 }
